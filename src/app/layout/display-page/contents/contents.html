@@ -1,0 +1,10 @@
+<div class="contents-container">
+  @for(tab of sideBarService.openedtab(); track tab.id) {
+    <div class="tab-page" [hidden]="sideBarService.currenttab() !== tab.id">
+      <app-tab-instance [tab]="tab"></app-tab-instance>
+    </div>
+  }
+  @if(sideBarService.openedtab().length === 0) {
+    <p class="default">No tab selected</p>
+  }
+</div>

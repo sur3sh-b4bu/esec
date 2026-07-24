@@ -1,0 +1,30 @@
+div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+}
+
+div > * {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.default{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    font-size: larger;
+    color: gray;
+}
+
+.tab-page[hidden] {
+    display: none !important;
+}
+

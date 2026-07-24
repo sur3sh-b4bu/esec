@@ -1,0 +1,70 @@
+<div>
+    @switch(tab.moduleName){
+    @case('Dashboard'){
+    <app-dashboard></app-dashboard>
+    }
+    @case('Cost'){
+    <app-cost></app-cost>
+    }
+    @case('Billing'){
+    <app-billing></app-billing>
+    }
+    @case('My Reports'){
+    <app-my-report></app-my-report>
+    }
+    @case('License'){
+    <app-license></app-license>
+    }
+    @case('Cloud'){
+    <app-cloud></app-cloud>
+    }
+    @case('Process'){
+    <app-process></app-process>
+    }
+    @case('Asset'){
+    <app-asset></app-asset>
+    }
+    @case('Compliance'){
+    <app-compliance></app-compliance>
+    }
+    @case('HPC'){
+    <app-hpc></app-hpc>
+    }
+    @case('Multi Site'){
+    <app-multi-site></app-multi-site>
+    }
+    @case('Software Register'){
+    <app-software-register></app-software-register>
+    }
+    @case('Admin'){
+    <app-admin></app-admin>
+    }
+    @case('License Manager'){
+    <app-license-manager></app-license-manager>
+    }
+    @case('Software'){
+    <app-software></app-software>
+    }
+    @case('Custom License'){
+    <app-custom-license></app-custom-license>
+    }
+    @case('Planner Portal'){
+    <app-planner-portal></app-planner-portal>
+    }
+    @case('Software Reservation'){
+    <app-software-reservation></app-software-reservation>
+    }
+    @case('Chatbot'){
+    <app-chatbot></app-chatbot>
+    }
+    @case('Software Dashboard'){
+    <app-software-dashboard></app-software-dashboard>
+    }
+    @case('Project Portal'){
+    <app-project-portal></app-project-portal>
+    }
+    @default {
+    <p class="default">No tab selected</p>
+    }
+    }
+</div>

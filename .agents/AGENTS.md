@@ -1,0 +1,1 @@
+- SECURITY RULE: Never touch, read, modify, or interact with any files in the src/environments directory and .env files.

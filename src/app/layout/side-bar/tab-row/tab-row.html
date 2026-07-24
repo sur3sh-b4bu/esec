@@ -1,0 +1,9 @@
+<div class="tab-main">
+    @for(tab of sideBarService.openedtab(); track tab.id) {
+    <div class="tab" [class.active]="sideBarService.currenttab() === tab.id" (click)="sideBarService.currenttab.set(tab.id)">
+        <i [class]="getIcon(tab.title)"></i>
+        {{tab.title}} ({{ tab.moduleName }})
+        <button type="button" class="close-button" (click)="close(tab.id); $event.stopPropagation()">x</button>
+    </div>
+    }
+</div>

@@ -1,0 +1,119 @@
+<div class="toolbar-container">
+    <div class="button-group">
+        <button class="icon-btn select-speedometer" [class.active]="filterService.viewMode() === 'dashboard'"
+            (click)="setViewMode('dashboard')" title="Dashboard View">
+            <i class="bi bi-speedometer2"></i>
+        </button>
+        <button class="icon-btn select-list" [class.active]="filterService.viewMode() === 'list'"
+            (click)="setViewMode('list')" title="List View">
+            <i class="bi bi-list-task"></i>
+        </button>
+    </div>
+
+    <div class="toolbar-divider"></div>
+
+    <div class="filter-container">
+        <input type="text" class="filter-input" placeholder="Filter..." [value]="filterService.searchTerm()"
+            (input)="onSearchInput($event)" />
+    </div>
+
+    <div class="toolbar-divider"></div>
+
+    <div class="control-card">
+        <span class="field-label">Range:</span>
+        <select class="clean-select" [value]="filterService.range()" (change)="onRangeChange($event)">
+            <option value="YTD">YTD</option>
+            <option value="360">360 Days</option>
+            <option value="180">180 Days</option>
+            <option value="90">90 Days</option>
+            <option value="60">60 Days</option>
+            <option value="30">30 Days</option>
+            <option value="15">15 Days</option>
+            <option value="7">7 Days</option>
+        </select>
+    </div>
+
+    <div class="control-card">
+        <span class="field-label">Option:</span>
+        <select class="clean-select" [value]="filterService.option()" (change)="onOptionChange($event)">
+            <option value="DP">DP</option>
+            <option value="Option2">Option 2</option>
+        </select>
+    </div>
+
+    <div class="control-card">
+        <span class="field-label">Feature:</span>
+        <div class="feature-selector-inline">
+            <span class="feature-text">All Feature</span>
+            <span class="clear-btn">&times;</span>
+        </div>
+    </div>
+
+    <div class="toolbar-divider"></div>
+
+    <div class="checkbox-card">
+        <div class="checkbox-group"><span class="field-label">Server:</span>
+            <label class="checkbox-wrapper">
+                <input type="checkbox" [checked]="filterService.licenseServerActive()"
+                    (change)="toggleSignal(filterService.licenseServerActive)" />
+                <span class="cb-label">Active</span>
+            </label>
+            <label class="checkbox-wrapper">
+                <input type="checkbox" [checked]="filterService.licenseServerInactive()"
+                    (change)="toggleSignal(filterService.licenseServerInactive)" />
+                <span class="cb-label">Inactive</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="toolbar-divider"></div>
+
+    <div class="checkbox-card">
+        <label class="checkbox-wrapper">
+            <input type="checkbox" [checked]="filterService.notExpired()"
+                (change)="toggleSignal(filterService.notExpired)" />
+            <span class="cb-label">Not Expired</span>
+        </label>
+    </div>
+
+    <div class="toolbar-divider"></div>
+
+    <div class="checkbox-group">
+        <label class="checkbox-wrapper status-pill">
+            <input type="checkbox" [checked]="filterService.utilizationGreen()"
+                (change)="toggleSignal(filterService.utilizationGreen)" />
+            <span class="cb-label-indicator">
+                <span class="indicator-dot green-dot"></span>
+                <span>&lt; 60%</span>
+            </span>
+        </label>
+        <label class="checkbox-wrapper status-pill orange-pill">
+            <input type="checkbox" [checked]="filterService.utilizationOrange()"
+                (change)="toggleSignal(filterService.utilizationOrange)" />
+            <span class="cb-label-indicator">
+                <span class="indicator-dot orange-dot"></span>
+                <span>&ge; 60% to &lt; 80%</span>
+            </span>
+        </label>
+        <label class="checkbox-wrapper status-pill red-pill">
+            <input type="checkbox" [checked]="filterService.utilizationRed()"
+                (change)="toggleSignal(filterService.utilizationRed)" />
+            <span class="cb-label-indicator">
+                <span class="indicator-dot red-dot"></span>
+                <span>&ge; 80%</span>
+            </span>
+        </label>
+    </div>
+
+    @if(filterWorkingDays){
+    <div>
+        <button type="check"></button>
+        Working Days
+    </div>
+    }
+
+
+    <div class="rowcount">
+        <p>Rows : {{filterService.count()}}</p>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="framework-tabs-container">
+  @for (tab of tabs; track tab.tabTitle()) {
+    <button 
+      type="button" 
+      class="framework-tab" 
+      [class.active]="tab.isActive()" 
+      (click)="selectTab(tab)">
+      @if (tab.icon()) {
+        <i [class]="tab.icon()"></i>
+      }
+      <span class="tab-label">{{ tab.tabTitle() }}</span>
+    </button>
+  }
+</div>
+<div class="framework-tabs-content-area">
+  <ng-content></ng-content>
+</div>

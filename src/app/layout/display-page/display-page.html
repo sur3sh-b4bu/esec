@@ -1,0 +1,21 @@
+<div class="dashboard-grid">
+    <div id="grid-left">
+        <app-side-bar ></app-side-bar>
+    </div>
+
+    <div class="grid-right">
+        <div class="grid-top">
+            <app-header></app-header>
+        </div>
+        <div class="grid-center" (click)="status()">
+            <app-tab-row class="tab-row"></app-tab-row>
+            @if(filterService.showFilterBar()) {
+                <app-filter-bar></app-filter-bar>
+            }
+            <app-contents></app-contents>
+        </div>
+        <div class="grid-bottom">
+            <app-status-bar></app-status-bar>
+        </div>
+    </div>
+</div>

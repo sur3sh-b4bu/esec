@@ -1,0 +1,26 @@
+<aside class="sidebar">
+  <div class="sidebar-menu">
+
+    @for(manifest of moduleService.getModules(); track $index){
+    @for(module of manifest.module; track module.id) {
+    <div class="sidebar-item" (click)="selectModule(module.name); this.sideBarService.panelstatus.set(true)">
+      <i class="bi {{module.icon}}" type="button"></i>
+    </div>
+    }
+    }
+    <app-panel [getname]="selectedpanel"></app-panel>
+  </div>
+  <div class="sidebar-bottom"><br>
+    <div class="sidebar-letter" title="Bentley">B</div>
+    <div class="sidebar-letter" title="Service">S</div>
+    <div class="sidebar-letter" title="Logs">L</div>
+    <div class="sidebar-letter" title="Vendor">O</div>
+    <div class="sidebar-letter" title="Vendor">D</div>
+    <div class="sidebar-letter" title="Vendor">E</div>
+    <div class="sidebar-letter" title="Vendor">C</div>
+    <div class="sidebar-letter" title="Vendor">F</div>
+    <div class="sidebar-letter" title="Vendor">F</div>
+  </div>
+
+</aside>
+

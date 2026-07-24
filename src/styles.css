@@ -1,0 +1,20 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    user-select: none;
+}
+.ag-theme-quartz {
+  --ag-row-border-color: #dcdcdc;
+  --ag-border-color: #dcdcdc;
+}
+.ag-theme-quartz .ag-cell {
+  border-right: 1px solid var(--ag-border-color);
+}
+.ag-theme-quartz .ag-header-cell {
+  border-right: 1px solid #7a8c9d;
+}
+
