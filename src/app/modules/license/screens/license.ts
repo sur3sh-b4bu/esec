@@ -16,6 +16,9 @@ import { LicenseOrganizationByYearMonth } from './license-organization-by-year-m
 import { LicenseReportType1 } from './license-report-type-1/license-report-type-1';
 import { LicenseUsage } from './license-usage/license-usage';
 import { LicenseUser } from './license-user/license-user';
+import { FilterServiceGlobal } from '@core/services/filter.service';
+import { FilterBar } from '@layout/filter-bar/filter-bar';
+import { FilterState } from '@core/state/filter.state';
 
 @Component({
   selector: 'app-license',
@@ -35,12 +38,16 @@ import { LicenseUser } from './license-user/license-user';
     LicenseOrganizationByYearMonth,
     LicenseReportType1,
     LicenseUsage,
-    LicenseUser
+    LicenseUser,
+    FilterBar
   ],
   templateUrl: './license.html',
   styleUrl: './license.css',
 })
+
 export class License {
   private sideBarService = inject(SideBarService);
+  filterService = inject(FilterServiceGlobal);
   activeSubTab = computed(() => this.sideBarService.activeTabTitle());
 }
+

@@ -26,11 +26,11 @@
 
     --divider-color: #cbd5e1;
 
-    --card-padding: 4px;
+    --card-padding: 2px;
 
-    --toolbar-height: 40px;
+    --toolbar-height: 35px;
 
-    --toolbar-control-height: var(--toolbar-control-height);
+    --toolbar-control-height: 23px;
 
 }
 
@@ -75,7 +75,6 @@
     display: flex;
     border: 1px solid var(--toolbar-border);
     border-radius: 6px;
-    overflow: hidden;
     height: var(--toolbar-control-height);
     box-sizing: border-box;
     background-color: var(--control-bg);

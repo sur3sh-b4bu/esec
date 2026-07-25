@@ -13,9 +13,22 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api', logsRouter);
+app.use((req,res) => {
+  res.status(404).json({ error: 'Not found' });
+})
+app.use((error:any, req:express.Request, res:express.Response, next: express.NextFunction) => {
+  console.error(error);
+  res.status(500).json({ error: 'Internal server error' });
+})
 
 const port = process.env.PORT || 3000;
 
 app.listen(port, async () => {
-  console.log(`Server is running on port ${port}`);
+  try{
+    console.log(`Server is running on port ${port}`);
+  }
+  catch(error){
+    console.error('Error starting server:', error);
+  }
+
 });

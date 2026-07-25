@@ -1,7 +1,6 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { FilterServiceGlobal } from '@core/services/filter.service';
 import { GridContext, gridColumns } from '@framework/grid';
-import { AdminAccessControlRow } from './admin-access-control.model';
 import { BaseDataSource } from '@framework/datasource';
 
 class GenericDataSource extends BaseDataSource<any> {
@@ -16,7 +15,6 @@ class GenericDataSource extends BaseDataSource<any> {
 @Injectable({
   providedIn: 'root'
 })
-
 export class AdminAccessControlContext {
   filterService = inject(FilterServiceGlobal);
 
@@ -30,37 +28,22 @@ export class AdminAccessControlContext {
     'l_qty_r',
     'max_qty_i',
     'qty_r',
-    'qty_db',
-    'qty_dp',
-    'qty_da',
-    'qty_dpm',
-    'qty_dam',
-    'qty_wp',
-    'qty_wa',
-    'qty_wam',
-    'qty_wpm',
-    'start_date',
-    'status',
-    'td',
-    'tlh_24',
-    'tot_du_q',
-    'w_days',
-    'w_dp_days'
+    'status'
   );
 
-  orgContext: GridContext<AdminAccessControlRow> = {
+  orgContext: GridContext<any> = {
     columns: this.columns,
     dataSource: new GenericDataSource('organization_grid'),
     filterService: this.filterService
   };
 
-  usersContext: GridContext<AdminAccessControlRow> = {
+  usersContext: GridContext<any> = {
     columns: this.columns,
     dataSource: new GenericDataSource('users_grid'),
     filterService: this.filterService
   };
 
-  rolesContext: GridContext<AdminAccessControlRow> = {
+  rolesContext: GridContext<any> = {
     columns: this.columns,
     dataSource: new GenericDataSource('roles_grid'),
     filterService: this.filterService

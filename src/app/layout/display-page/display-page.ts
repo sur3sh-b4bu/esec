@@ -6,11 +6,10 @@ import { TabRow } from '../side-bar/tab-row/tab-row';
 import { SideBarService } from '@framework/layout/services/side-bar.service';
 import { Contents } from './contents/contents';
 import { FilterServiceGlobal } from '@core/services/filter.service';
-import { FilterBar } from '../filter-bar/filter-bar';
 
 @Component({
   selector: 'app-display-page',
-  imports: [Header, StatusBar, SideBar, TabRow, Contents, FilterBar],
+  imports: [Header, StatusBar, SideBar, TabRow, Contents],
   templateUrl: './display-page.html',
   styleUrl: './display-page.css',
 })

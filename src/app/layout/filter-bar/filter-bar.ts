@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './filter-bar.html',
   styleUrl: './filter-bar.css',
 })
+
 export class FilterBar {
   @Input() filterDashboard = false;
   @Input() filterText = false;

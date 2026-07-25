@@ -4,7 +4,6 @@ import { GridApi, GridReadyEvent, ModelUpdatedEvent } from 'ag-grid-community';
 import { GridContext } from '../../models/grid-context.model';
 import { DataSourceEngine } from '../../../datasource';
 import { DEFAULT_COL_DEF, DEFAULT_THEME } from '../../../../shared/config/grid.config';
-import { CustomPivotEngine } from '../../utils/pivot-engine';
 
 @Component({
   selector: 'framework-grid',
@@ -14,6 +13,7 @@ import { CustomPivotEngine } from '../../utils/pivot-engine';
   styleUrl: './framework-grid.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
 export class FrameworkGridComponent<T> {
   @Input({ required: true }) context!: GridContext<T>;
 
@@ -28,34 +28,24 @@ export class FrameworkGridComponent<T> {
   constructor() {
     effect(() => {
       if (this.context && this.context.dataSource) {
+
+        this.context.filterService?.range?.();
+        this.context.filterService?.option?.();
+        this.context.filterService?.searchTerm?.();
+        this.context.filterService?.licenseServerActive?.();
         this.context.dataSource.refreshTrigger?.();
 
         this.engine.load(this.context.dataSource, this.context.filterService).subscribe({
           next: (res) => {
-            let finalData = res;
-
-            // Intercept data if pivot configuration exists
-            if (this.context.pivotConfig) {
-              const pivotResult = CustomPivotEngine.process(res, this.context.pivotConfig);
-              finalData = pivotResult.rowData;
-              
-              // Apply dynamic columns
-              if (this.gridApi) {
-                this.gridApi.setGridOption('columnDefs', pivotResult.columnDefs);
-              } else {
-                this.context.columns = pivotResult.columnDefs;
-              }
-            }
-
-            this.rowData.set(finalData);
+            this.rowData.set(res);
             if (this.context.filterService && this.context.filterService.count) {
-              this.context.filterService.count.set(finalData.length);
+              this.context.filterService.count.set(res.length);
             }
           },
           error: (err) => console.error('FrameworkGrid fetch error:', err)
         });
       }
-    }, { allowSignalWrites: true });
+    });
   }
 
   onGridReady(params: GridReadyEvent): void {

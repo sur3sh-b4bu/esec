@@ -9,9 +9,6 @@
         </div>
         <div class="grid-center" (click)="status()">
             <app-tab-row class="tab-row"></app-tab-row>
-            @if(filterService.showFilterBar()) {
-                <app-filter-bar></app-filter-bar>
-            }
             <app-contents></app-contents>
         </div>
         <div class="grid-bottom">

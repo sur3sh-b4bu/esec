@@ -1,15 +1,16 @@
 import { inject, Injectable } from "@angular/core";
 import { LicenseOrganizationByWeekDataSource } from "./license-organization-by-week.ds";
 import { FilterServiceGlobal } from '@core/services/filter.service';
-import { gridColumns } from '@framework/grid';
+import { GridContext, gridColumns } from '@framework/grid';
+import { LicenseOrganizationByWeekRow } from "./license-organization-by-week.model";
 
 @Injectable({
     providedIn: 'root'
 })
-export class LicenseOrganizationByWeekContext {
+export class LicenseOrganizationByWeekContext implements GridContext<LicenseOrganizationByWeekRow> {
 
-    dataSource = new LicenseOrganizationByWeekDataSource();
-    filterService = inject(FilterServiceGlobal)
+    dataSource = inject(LicenseOrganizationByWeekDataSource);
+    filterService = inject(FilterServiceGlobal);
 
     columns = gridColumns(
         'sw',
@@ -25,7 +26,6 @@ export class LicenseOrganizationByWeekContext {
         'di',
         { field: 'used_lic_hours', width: 200 },
         { field: 'avail_lic_hours', width: 200 },
-        { field: 'p_dw_q: string' , width : 200 }
+        { field: 'p_dw_q', width: 200 }
     );
-
 }

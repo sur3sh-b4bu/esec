@@ -1,5 +1,17 @@
 :host {
-  display: block;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   height: 100%;
   width: 100%;
+  min-height: 0;
+}
+
+.framework-grid-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  min-height: 0;
 }

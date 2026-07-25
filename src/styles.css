@@ -1,3 +1,9 @@
+:root {
+    --card-padding: 2px;
+    --toolbar-height: 35px;
+    --toolbar-control-height: 26px;
+}
+
 html,
 body {
     height: 100%;
@@ -16,5 +22,9 @@ body {
 }
 .ag-theme-quartz .ag-header-cell {
   border-right: 1px solid #7a8c9d;
+}
+
+.ag-watermark {
+  display: none !important;
 }
 
