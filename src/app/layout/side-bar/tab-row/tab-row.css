@@ -15,32 +15,46 @@
     margin: 0px;
     white-space: nowrap;
     scrollbar-width: none;
+    height: var(--tab-row-height, 32px);
+    align-items: center;
 }
 
-.close-button{
+.tab-main:has(.tab) {
+    background-color: rgb(239, 237, 237);
+}
+
+.close-button {
     border: none;
     background-color: transparent;
     padding: 0;
-    padding-left: 15px;
+    padding-left: 10px;
     margin: 0;
-    font-size: 20px;
+    font-size: 14px;
+    line-height: 1;
     color: gray;
     cursor: pointer;
 }
 
 .tab {
-    padding: 8px 20px 8px 25px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 16px;
+    height: 100%;
     border-right: 1px solid lightgray;
     color: gray;
     width: fit-content;
-    height: fit-content;
-    background-color: #f7f7f7;
+    background-color: rgb(239, 237, 237);
     flex-shrink: 0;
+    font-size: 13px;
+    box-sizing: border-bottom;
 }
 
 .tab.active {
-    border-bottom: 3px solid rgb(56, 96, 148);
-    background-color: white
+    background-color: white;
+    border-bottom: 1px rgb(232, 230, 230);
+    border-radius: 0 8px 0 0;
+    margin-top: 2px;
+
 }
 
 .tab i {

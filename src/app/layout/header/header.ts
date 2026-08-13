@@ -10,7 +10,4 @@ import { FilterServiceGlobal } from '@core/services/filter.service';
 export class Header {
   filterService = inject(FilterServiceGlobal);
 
-  toggleFilterBar() {
-    this.filterService.showFilterBar.set(!this.filterService.showFilterBar());
-  }
 }

@@ -4,9 +4,7 @@ import { FilterServiceGlobal } from '@core/services/filter.service';
 import { GridContext, gridColumns } from '@framework/grid';
 import { LicenseOrganizationByWeekRow } from "./license-organization-by-week.model";
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class LicenseOrganizationByWeekContext implements GridContext<LicenseOrganizationByWeekRow> {
 
     dataSource = inject(LicenseOrganizationByWeekDataSource);

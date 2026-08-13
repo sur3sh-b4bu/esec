@@ -1,5 +1,5 @@
-<div>
-    @switch(tab.moduleName){
+<div class="tab-instance-body">
+    @switch(tab().moduleName){
     @case('Dashboard'){
     <app-dashboard></app-dashboard>
     }
@@ -62,6 +62,69 @@
     }
     @case('Project Portal'){
     <app-project-portal></app-project-portal>
+    }
+    @case('LicenseSummary'){
+    <app-license-organization-summary [tab]="tab()"></app-license-organization-summary>
+    }
+    @case('LicenseUtilization'){
+    <app-license-organization-utilization [tab]="tab()"></app-license-organization-utilization>
+    }
+    @case('LicenseHistory'){
+    <app-license-organization-history [tab]="tab()"></app-license-organization-history>
+    }
+    @case('LicenseQos'){
+    <app-license-organization-qos [tab]="tab()"></app-license-organization-qos>
+    }
+    @case('LicenseHeatmap'){
+    <app-license-organization-heatmap [tab]="tab()"></app-license-organization-heatmap>
+    }
+    @case('LicenseMonth'){
+    <app-license-organization-month [tab]="tab()"></app-license-organization-month>
+    }
+    @case('LicenseDate'){
+    <app-license-organization-date [tab]="tab()"></app-license-organization-date>
+    }
+    @case('LicenseHours'){
+    <app-license-organization-hours [tab]="tab()"></app-license-organization-hours>
+    }
+    @case('LicenseUsage'){
+    <app-license-organization-usage [tab]="tab()"></app-license-organization-usage>
+    }
+    @case('LicenseUtilizationAndHours'){
+    <app-license-organization-utilization-and-hours [tab]="tab()"></app-license-organization-utilization-and-hours>
+    }
+    @case('LicenseCheckoutUser'){
+    <app-license-organization-checkout-user [tab]="tab()"></app-license-organization-checkout-user>
+    }
+    @case('LicenseCheckoutCount'){
+    <app-license-organization-checkout-count [tab]="tab()"></app-license-organization-checkout-count>
+    }
+    @case('LicenseLongDuration'){
+    <app-license-organization-long-duration [tab]="tab()"></app-license-organization-long-duration>
+    }
+    @case('LicenseDenial'){
+    <app-license-organization-denial [tab]="tab()"></app-license-organization-denial>
+    }
+    @case('LicenseBorrow'){
+    <app-license-organization-borrow [tab]="tab()"></app-license-organization-borrow>
+    }
+    @case('LicenseDivision'){
+    <app-license-organization-division [tab]="tab()"></app-license-organization-division>
+    }
+    @case('LicenseDepartment'){
+    <app-license-organization-department [tab]="tab()"></app-license-organization-department>
+    }
+    @case('LicenseReservation'){
+    <app-license-organization-reservation [tab]="tab()"></app-license-organization-reservation>
+    }
+    @case('LicenseAssetInfo'){
+    <app-license-organization-asset-info [tab]="tab()"></app-license-organization-asset-info>
+    }
+    @case('LicenseDebugData'){
+    <app-license-organization-debug-data [tab]="tab()"></app-license-organization-debug-data>
+    }
+    @case('LicenseBundle'){
+    <app-license-organization-bundle [tab]="tab()"></app-license-organization-bundle>
     }
     @default {
     <p class="default">No tab selected</p>

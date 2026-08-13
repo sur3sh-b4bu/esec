@@ -1,0 +1,31 @@
+<div class="license-usage-container">
+  <div class="usage-subtabs-header">
+    @for (t of subTabs; track t) {
+      <button
+        type="button"
+        class="usage-tab-btn"
+        [class.active]="activeSubTab() === t"
+        (click)="selectTab(t)"
+      >
+        {{ t }}
+      </button>
+    }
+  </div>
+
+  <div class="usage-subtab-content">
+    @switch (activeSubTab()) {
+      @case ('Summary') {
+        <app-license-organization-usage-summary [tab]="tab()"></app-license-organization-usage-summary>
+      }
+      @case ('Daywise Summary') {
+        <app-license-organization-usage-daywise-summary [tab]="tab()"></app-license-organization-usage-daywise-summary>
+      }
+      @case ('Daywise Session') {
+        <app-license-organization-usage-daywise-session [tab]="tab()"></app-license-organization-usage-daywise-session>
+      }
+      @case ('Matrix') {
+        <app-license-organization-usage-matrix [tab]="tab()"></app-license-organization-usage-matrix>
+      }
+    }
+  </div>
+</div>

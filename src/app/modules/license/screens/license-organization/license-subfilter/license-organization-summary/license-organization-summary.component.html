@@ -1,0 +1,111 @@
+<div class="chart-page-container">
+  <div class="top-control-bar">
+    <div class="plot-options">
+      <span class="control-label">Plot</span>
+      <label class="radio-label">
+        <input type="radio" name="plotType" value="value" [checked]="plotType() === 'value'" (change)="onPlotTypeChange('value')"> Value
+      </label>
+      <label class="radio-label">
+        <input type="radio" name="plotType" value="percentage" [checked]="plotType() === 'percentage'" (change)="onPlotTypeChange('percentage')"> Percentage
+      </label>
+    </div>
+
+    <div class="checkbox-options">
+      <label class="cb-badge" [ngClass]="{'cb-dp': showDP()}">
+        <input type="checkbox" [checked]="showDP()" (change)="toggleSeries('DP')"> DP
+      </label>
+      <label class="cb-badge" [ngClass]="{'cb-da': showDA()}">
+        <input type="checkbox" [checked]="showDA()" (change)="toggleSeries('DA')"> DA
+      </label>
+      <label class="cb-badge" [ngClass]="{'cb-dpm': showDPM()}">
+        <input type="checkbox" [checked]="showDPM()" (change)="toggleSeries('DPM')"> DPM
+      </label>
+      <label class="cb-badge" [ngClass]="{'cb-dam': showDAM()}">
+        <input type="checkbox" [checked]="showDAM()" (change)="toggleSeries('DAM')"> DAM
+      </label>
+      <label class="cb-badge" [ngClass]="{'cb-wp': showWP()}">
+        <input type="checkbox" [checked]="showWP()" (change)="toggleSeries('WP')"> WP
+      </label>
+      <label class="cb-badge" [ngClass]="{'cb-wa': showWA()}">
+        <input type="checkbox" [checked]="showWA()" (change)="toggleSeries('WA')"> WA
+      </label>
+      <label class="cb-badge" [ngClass]="{'cb-wpm': showWPM()}">
+        <input type="checkbox" [checked]="showWPM()" (change)="toggleSeries('WPM')"> WPM
+      </label>
+      <label class="cb-badge" [ngClass]="{'cb-wam': showWAM()}">
+        <input type="checkbox" [checked]="showWAM()" (change)="toggleSeries('WAM')"> WAM
+      </label>
+      <label class="cb-badge" [ngClass]="{'cb-issued': showIssued()}">
+        <input type="checkbox" [checked]="showIssued()" (change)="toggleSeries('ISSUED')"> ISSUED
+      </label>
+    </div>
+
+    <div class="summary-info">
+      Summary. {{ software() }}. {{ server() }}, {{ feature() }}
+    </div>
+  </div>
+
+  <div class="dashboard-body">
+    
+    <div class="charts-section">
+      
+      <div class="charts-row">
+        <div class="chart-card">
+          <div class="chart-header">
+            <span class="chart-title">30 Days Utilization</span>
+            <label class="working-days-cb">
+              <input type="checkbox" [checked]="showWorkingDays()" (change)="toggleWorkingDays()"> Working Days
+            </label>
+          </div>
+          <div class="chart-body">
+            <framework-chart [context]="chartContext30" [plotType]="plotType()" [workingDaysOnly]="showWorkingDays()"></framework-chart>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-header">
+            <span class="chart-title">52 Weeks Utilization</span>
+          </div>
+          <div class="chart-body">
+            <framework-chart [context]="chartContextWeek" [plotType]="plotType()"></framework-chart>
+          </div>
+        </div>
+      </div>
+
+      <div class="charts-row">
+        <div class="chart-card">
+          <div class="chart-header">
+            <span class="chart-title">12 Months Utilization</span>
+          </div>
+          <div class="chart-body">
+            <framework-chart [context]="chartContextMonth" [plotType]="plotType()"></framework-chart>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-header">
+            <span class="chart-title">10 Years Utilization</span>
+          </div>
+          <div class="chart-body">
+            <framework-chart [context]="chartContextYear" [plotType]="plotType()"></framework-chart>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="indicators-section">
+      <div class="table-header">Indicators</div>
+      <div class="indicators-table-wrapper">
+        <ag-grid-angular
+          [rowData]="rowDataIndicator()"
+          [columnDefs]="indicatorColumnDefs()"
+          [defaultColDef]="defaultColDef"
+          [theme]="theme"
+          (gridReady)="onIndicatorGridReady($event)">
+        </ag-grid-angular>
+      </div>
+    </div>
+
+  </div>
+</div>

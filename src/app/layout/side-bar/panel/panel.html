@@ -1,7 +1,4 @@
-@if(this.sideBarService.panelstatus()){
-@for(manifest of moduleService.getModules(); track $index){
-@for(module of manifest.module; track module.id) {
-@if(module.name === getname()) {
+@if(this.sideBarService.panelstatus() && activetab(); as module){
 <div class="panel-container">
     <div class="reports-panel">
         <div class="panel-header">
@@ -11,7 +8,7 @@
         </div>
         <div class="panel-content">
             <div class="search-box-container">
-                <input type="text" class="report-search-input" placeholder="Filter........">
+                <input type="text" class="report-search-input" onchange="" placeholder="Filter........">
             </div>
             <div class="report-list">
                 @for(list of module.list; track $index) {
@@ -24,6 +21,8 @@
     </div>
 </div>
 }
+
+@if(!filter){
+
 }
-}
-}
+

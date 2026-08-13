@@ -1,13 +1,16 @@
 <div class="framework-grid-container" style="height: 100%; width: 100%;">
   <ag-grid-angular
     [rowData]="rowData()"
-    [columnDefs]="context.columns"
+    [columnDefs]="context().columns"
     [defaultColDef]="defaultColDef"
-    [theme]="theme"
-    [gridOptions]="context.gridOptions"
-    [quickFilterText]="context.filterService?.searchTerm()"
+    [theme]="context().theme || theme"
+    [sideBar]="sideBar()"
+    [gridOptions]="context().gridOptions"
+    [quickFilterText]="context().filterService?.searchTerm()"
     (gridReady)="onGridReady($event)"
-    (modelUpdated)="onModelUpdated($event)"
+    (modelUpdated)="onModelUpdated()"
+    (cellClicked)="onCellClicked($event)"
     style="height: 100%; width: 100%;">
   </ag-grid-angular>
 </div>
+

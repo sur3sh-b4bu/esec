@@ -6,4 +6,6 @@ export interface GridContext<T> {
   dataSource: BaseDataSource<T>;
   filterService: any;
   gridOptions?: any;
+  theme?: any;
+  onGridReady?: (params: any) => void;
 }

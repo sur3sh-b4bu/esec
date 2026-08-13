@@ -2,8 +2,9 @@
     @for(tab of sideBarService.openedtab(); track tab.id) {
     <div class="tab" [class.active]="sideBarService.currenttab() === tab.id" (click)="sideBarService.currenttab.set(tab.id)">
         <i [class]="getIcon(tab.title)"></i>
-        {{tab.title}} ({{ tab.moduleName }})
+        <span class="tab-label" style="color: rgb(20, 23, 22);">{{tab.title}} &nbsp;</span><span class="tab-label" style="color: red;"> ( {{ tab.moduleName }} )</span>
         <button type="button" class="close-button" (click)="close(tab.id); $event.stopPropagation()">x</button>
     </div>
     }
 </div>
+

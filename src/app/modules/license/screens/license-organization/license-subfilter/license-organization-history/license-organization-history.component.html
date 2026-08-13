@@ -1,0 +1,34 @@
+<div class="history-page-container">
+  <div class="top-control-bar">
+    <label class="control-item">
+      <input type="checkbox" [checked]="showWorkingDays()" (change)="toggleWorkingDays()"> Working Days
+    </label>
+
+    <div class="control-item">
+      <span>Reduction :</span>
+      <input type="text" class="control-input" [value]="reductionVal()" (change)="onReductionChange($event)">
+    </div>
+
+    <div class="control-item">
+      <span>Percentile :</span>
+      <input type="text" class="control-input" [value]="percentileVal()" (change)="onPercentileChange($event)">
+    </div>
+
+    <div class="center-info">
+      History. {{ software() }}. {{ server() }}. {{ feature() }}. {{ startDate() }} To {{ endDate() }}. Last Issued : {{ lastIssued() }}
+    </div>
+
+    <div class="badges-group">
+      <span class="pill-badge-outline">X-axis Count : {{ xAxisCount() }}</span>
+      <span class="pill-badge-purple">Total Data Points : {{ totalDataPoints() }}</span>
+      <span class="pill-badge-purple">100% Utilized Points : {{ utilizedPoints() }}</span>
+      <span class="pill-badge-purple">Percentage of 100%: {{ percentage100() }}</span>
+    </div>
+  </div>
+
+  <div class="chart-content-body">
+    <div class="chart-card">
+      <framework-chart [context]="chartContext"></framework-chart>
+    </div>
+  </div>
+</div>

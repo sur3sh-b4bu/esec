@@ -1,26 +1,85 @@
-<aside class="sidebar">
+<aside class="sidebar" [class.expanded]="isExpanded()" (scroll)="onSidebarScroll()">
   <div class="sidebar-menu">
+
+    <div class="sidebar-toggle-item" (click)="toggleSidebar()" [title]="isExpanded() ? 'Collapse' : 'Expand'">
+      <i class="bi" [class.bi-chevron-double-right]="!isExpanded()" [class.bi-chevron-double-left]="isExpanded()"></i>
+    </div>
 
     @for(manifest of moduleService.getModules(); track $index){
     @for(module of manifest.module; track module.id) {
-    <div class="sidebar-item" (click)="selectModule(module.name); this.sideBarService.panelstatus.set(true)">
+    <div class="sidebar-item" 
+         [class.selected]="selectedpanel === module.name && this.sideBarService.panelstatus()"
+         (click)="selectModule(module.name, $event); this.sideBarService.panelstatus.set(true)">
       <i class="bi {{module.icon}}" type="button"></i>
+      @if (isExpanded()) {
+        <span class="module-name">{{module.name}}</span>
+      }
     </div>
     }
     }
-    <app-panel [getname]="selectedpanel"></app-panel>
+    <app-panel [getname]="selectedpanel" [style.--panel-top.px]="panelTop()"></app-panel>
   </div>
-  <div class="sidebar-bottom"><br>
-    <div class="sidebar-letter" title="Bentley">B</div>
-    <div class="sidebar-letter" title="Service">S</div>
-    <div class="sidebar-letter" title="Logs">L</div>
-    <div class="sidebar-letter" title="Vendor">O</div>
-    <div class="sidebar-letter" title="Vendor">D</div>
-    <div class="sidebar-letter" title="Vendor">E</div>
-    <div class="sidebar-letter" title="Vendor">C</div>
-    <div class="sidebar-letter" title="Vendor">F</div>
-    <div class="sidebar-letter" title="Vendor">F</div>
+  <div class="sidebar-bottom">
+    <div class="sidebar-bottom-item" title="Bentley">
+      <div class="sidebar-letter">B</div>
+      @if (isExpanded()) {
+        <span class="bottom-label">Bentley</span>
+      }
+    </div>
+    <div class="sidebar-bottom-item" title="Service">
+      <div class="sidebar-letter">S</div>
+      @if (isExpanded()) {
+        <span class="bottom-label">Service</span>
+      }
+    </div>
+    <div class="sidebar-bottom-item" title="Logs">
+      <div class="sidebar-letter">L</div>
+      @if (isExpanded()) {
+        <span class="bottom-label">Logs</span>
+      }
+    </div>
+    <div class="sidebar-bottom-item" title="Vendor O">
+      <div class="sidebar-letter">O</div>
+      @if (isExpanded()) {
+        <span class="bottom-label">Vendor O</span>
+      }
+    </div>
+    <div class="sidebar-bottom-item" title="Vendor D">
+      <div class="sidebar-letter">D</div>
+      @if (isExpanded()) {
+        <span class="bottom-label">Vendor D</span>
+      }
+    </div>
+    <div class="sidebar-bottom-item" title="Vendor E">
+      <div class="sidebar-letter">E</div>
+      @if (isExpanded()) {
+        <span class="bottom-label">Vendor E</span>
+      }
+    </div>
+    <div class="sidebar-bottom-item" title="Vendor C">
+      <div class="sidebar-letter">C</div>
+      @if (isExpanded()) {
+        <span class="bottom-label">Vendor C</span>
+      }
+    </div>
+    <div class="sidebar-bottom-item" title="Vendor F">
+      <div class="sidebar-letter">F</div>
+      @if (isExpanded()) {
+        <span class="bottom-label">Vendor F</span>
+      }
+    </div>
+    <div class="sidebar-bottom-item" title="Vendor F">
+      <div class="sidebar-letter">F</div>
+      @if (isExpanded()) {
+        <span class="bottom-label">Vendor F</span>
+      }
+    </div>
   </div>
 
+  <div class="sidebar-footer-indicator">
+    <div class="indicator">
+      <i class="bi bi-chevron-double-down"></i>
+    </div>
+  </div>
 </aside>
 

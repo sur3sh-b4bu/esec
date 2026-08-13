@@ -1,23 +1,57 @@
 <footer class="status-bar">
   <div class="status-left">
-    <div class="status-item dropdown-item">
-      <span>YTD</span>
-      <i class="bi bi-caret-down-fill"></i>
+    <div class="status-item dropdown-container">
+      <select class="dropdown-select" [value]="selectedPeriod" (change)="onPeriodChange($event)">
+        <option value="07">7 Days</option>
+        <option value="week">Week</option>
+        <option value="30">30 Days</option>
+        <option value="60">60 Days</option>
+        <option value="90">90 Days</option>
+        <option value="180">180 Days</option>
+        <option value="360">360 Days</option>
+        <option value="ytd">YTD</option>
+        <option value="jul-2026">JUL - 2026</option>
+        <option value="aug-2026">AUG - 2026</option>
+        <option value="q4-2025">Q4 - 2025</option>
+        <option value="q1-2026">Q1 - 2026</option>
+        <option value="q2-2026">Q2 - 2026</option>
+        <option value="q3-2026">Q3 - 2026</option>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+        <option value="date-range">Date Range</option>
+      </select>
     </div>
-    <div class="status-item">
-      <i class="bi bi-calendar3"></i>
-      <span>01-Feb-2021</span>
+
+    <div class="status-item clickable" (click)="openStartDatePicker()" title="Click to set Start Date">
+      <i class="bi bi-calendar3 icon-blue"></i>
+      <span>{{ statusBarService.startDate() }}</span>
+      <input #startDateInput type="date" class="hidden-input" [disabled]="checkperiod('date-range')" (change)="handleStartDateSelection($any($event.target).value)" />
     </div>
-    <div class="status-item">
-      <i class="bi bi-calendar3"></i>
-      <span>29-Jun-2026</span>
+
+    <div class="status-item clickable" (click)="openEndDatePicker()" title="Click to set End Date">
+      <i class="bi bi-calendar3 icon-blue"></i>
+      <span>{{ statusBarService.endDate() }}</span>
+      <input #endDateInput type="date" class="hidden-input" [disabled]="checkperiod('date-range')" (change)="handleEndDateSelection($any($event.target).value)" />
     </div>
-    <div class="status-item">
-      <i class="bi bi-clock"></i>
-      <span>10:00 - 17:00</span>
+
+    <div class="status-item clickable" (click)="timebutton()" [class.active]="time" title="Toggle Time Window">
+      <i class="bi bi-clock icon-blue"></i>
+      <span>{{ statusBarService.selectedTimeRange() }}</span>
+    </div>
+
+    <button class="parameters-btn" [class.active]="parameter" (click)="openParameter()">
+      <i class="bi bi-sliders me-1"></i>
+      Parameters
+    </button>
+    <div class="status-item clickable refresh-btn" (click)="exportDate()" title="Click to refresh timestamp">
+      <i class="bi bi-arrow-clockwise icon-green"></i>
+      <span class="refresh-text">{{ currentdate || 'Refresh' }}</span>
     </div>
   </div>
+
   <div class="status-right">
-    <button class="parameters-btn">Parameters</button>
   </div>
+
+  <app-components></app-components>
 </footer>
+

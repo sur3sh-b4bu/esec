@@ -1,0 +1,56 @@
+<div class="matrix-group-container">
+  <div class="usage-info-bar">
+    <div class="left-controls">
+      <input type="text" class="filter-input" placeholder="Filter..." />
+    </div>
+    <div class="meta-info-text">
+      Holiday Included Matlab. 27005&#64;MSILENGSAOLIC02. MATLAB_Report_Gen. MATLAB_Report_Gen. Gurgaon. 15-Aug-2025 To 09-Aug-2026 Distinct Users : 7 Rows : 4
+    </div>
+    <div class="right-view-mode-radios">
+      <label class="radio-label">
+        <input type="radio" name="viewModeGrp" [checked]="viewMode() === 'all'" (change)="setViewMode('all')" /> Show All
+      </label>
+      <label class="radio-label">
+        <input type="radio" name="viewModeGrp" [checked]="viewMode() === 'total'" (change)="setViewMode('total')" /> Total Hours
+      </label>
+      <label class="radio-label">
+        <input type="radio" name="viewModeGrp" [checked]="viewMode() === 'work'" (change)="setViewMode('work')" /> Work Hours
+      </label>
+      <label class="radio-label">
+        <input type="radio" name="viewModeGrp" [checked]="viewMode() === 'lic_total'" (change)="setViewMode('lic_total')" /> Total License Hours
+      </label>
+      <label class="radio-label">
+        <input type="radio" name="viewModeGrp" [checked]="viewMode() === 'lic_work'" (change)="setViewMode('lic_work')" /> Work License Hours
+      </label>
+    </div>
+  </div>
+
+  <div class="matrix-split-body">
+    <div class="grid-panel">
+      <framework-grid [context]="context"></framework-grid>
+    </div>
+
+    <div class="charts-panel">
+      @if (viewMode() === 'all' || viewMode() === 'total') {
+        <div class="chart-card">
+          <framework-chart [options]="totalHoursChartOptions"></framework-chart>
+        </div>
+      }
+      @if (viewMode() === 'all' || viewMode() === 'work') {
+        <div class="chart-card">
+          <framework-chart [options]="workHoursChartOptions"></framework-chart>
+        </div>
+      }
+      @if (viewMode() === 'all' || viewMode() === 'lic_total') {
+        <div class="chart-card">
+          <framework-chart [options]="licTotalHoursChartOptions"></framework-chart>
+        </div>
+      }
+      @if (viewMode() === 'all' || viewMode() === 'lic_work') {
+        <div class="chart-card">
+          <framework-chart [options]="licWorkHoursChartOptions"></framework-chart>
+        </div>
+      }
+    </div>
+  </div>
+</div>

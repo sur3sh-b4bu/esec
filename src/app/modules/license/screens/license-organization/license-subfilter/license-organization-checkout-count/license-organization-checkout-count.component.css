@@ -1,0 +1,63 @@
+:host {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.checkout-count-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  gap: 8px;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+.usage-info-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #334155;
+}
+
+.meta-info-text {
+  font-size: 12px;
+  color: #475569;
+  font-weight: 500;
+}
+
+.right-controls {
+  display: flex;
+  align-items: center;
+}
+
+.working-days-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #334155;
+}
+
+.chart-wrapper {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+}

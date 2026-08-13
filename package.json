@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "concurrently \"npm run start:frontend\" \"npm run server\"",
     "start:frontend": "ng serve",
-    "server": "tsx backend/server.ts",
+    "server": "tsx watch backend/server.ts",
     "build": "ng build",
     "watch": "ng build --watch --configuration development"
   },
@@ -24,14 +24,20 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "highcharts": "^13.0.0",
+    "highcharts-angular": "^5.4.1",
     "mysql2": "^3.23.1",
     "pg": "^8.22.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
+  "overrides": {
+    "@hono/node-server": "^2.0.5",
+    "undici": "^7.29.0"
+  },
   "devDependencies": {
     "@angular/build": "^21.2.19",
-    "@angular/cli": "^21.2.19",
+    "@angular/cli": "^21.0.4",
     "@angular/compiler-cli": "^21.2.0",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",

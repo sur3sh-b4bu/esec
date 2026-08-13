@@ -1,0 +1,79 @@
+<div class="qos-page-container">
+  <div class="top-control-panel">
+    <!-- Row 1 -->
+    <div class="control-row">
+      <div class="radio-group">
+        <label class="radio-label">
+          <input type="radio" name="scaleMode" value="linear" [checked]="scaleMode() === 'linear'" (change)="scaleMode.set('linear')"> Linear
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="scaleMode" value="actual" [checked]="scaleMode() === 'actual'" (change)="scaleMode.set('actual')"> Actual
+        </label>
+      </div>
+
+      <div class="radio-group">
+        <label class="radio-label">
+          <input type="radio" name="groupType" value="date" [checked]="groupType() === 'date'" (change)="onGroupTypeChange('date')"> Date
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="groupType" value="data" [checked]="groupType() === 'data'" (change)="onGroupTypeChange('data')"> Data
+        </label>
+      </div>
+
+      <div class="radio-group">
+        <label class="radio-label">
+          <input type="radio" name="hoursMode" value="24" [checked]="hoursMode() === '24'" (change)="onHoursModeChange('24')"> 24 Hours
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="hoursMode" value="working" [checked]="hoursMode() === 'working'" (change)="onHoursModeChange('working')"> Working Hours Usage (09:00 - 18:45)
+        </label>
+      </div>
+
+      <label class="checkbox-label">
+        <input type="checkbox" [checked]="showWorkingDays()" (change)="toggleWorkingDays()"> Working Days
+      </label>
+
+      <span class="header-info-text">
+        QOS. {{ software() }}. {{ server() }}. {{ feature() }}. {{ startDate() }} To {{ endDate() }}. Last Issued : {{ lastIssued() }}
+      </span>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="control-row">
+      <div class="input-item">
+        <span>Reduction :</span>
+        <input type="text" class="short-input" [value]="reductionVal()" (change)="onReductionChange($event)">
+      </div>
+
+      <div class="input-item">
+        <span>Percentage :</span>
+        <input type="text" class="short-input" [value]="percentageVal()" (change)="onPercentageChange($event)">
+      </div>
+
+      <button class="icon-btn" (click)="toggleViewMode()" title="Toggle Grid / Chart">
+        📊
+      </button>
+
+      <div class="badges-group">
+        <span class="pill-badge-green">Total Days : {{ totalDays() }}</span>
+        <span class="pill-badge-red">Unused Days : {{ unusedDays() }}</span>
+        <span class="pill-badge-red">{{ qosStatus() }}</span>
+      </div>
+
+      <label class="checkbox-label hours-cb-right">
+        <input type="checkbox" [checked]="showHoursPerDay()" (change)="showHoursPerDay.set(!showHoursPerDay())"> Hours Per Day:
+      </label>
+    </div>
+  </div>
+
+  <div class="chart-content-body">
+    <div class="chart-card">
+      <ng-container *ngIf="showChart(); else gridView">
+        <framework-chart [context]="chartContext"></framework-chart>
+      </ng-container>
+      <ng-template #gridView>
+        <framework-grid [context]="context"></framework-grid>
+      </ng-template>
+    </div>
+  </div>
+</div>

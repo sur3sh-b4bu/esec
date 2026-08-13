@@ -2,6 +2,9 @@
   "compileOnSave": false,
   "compilerOptions": {
     "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noEmit": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -14,18 +17,48 @@
     "module": "preserve",
     "baseUrl": "./",
     "paths": {
-      "@core": ["src/app/core/index", "src/app/core"],
-      "@core/*": ["src/app/core/*"],
-      "@framework": ["src/app/framework/index", "src/app/framework"],
-      "@framework/*": ["src/app/framework/*"],
-      "@modules": ["src/app/modules/index", "src/app/modules"],
-      "@modules/*": ["src/app/modules/*"],
-      "@layout": ["src/app/layout/index", "src/app/layout"],
-      "@layout/*": ["src/app/layout/*"],
-      "@shared": ["src/app/shared/index", "src/app/shared"],
-      "@shared/*": ["src/app/shared/*"],
-      "@env": ["src/environments/index", "src/environments"],
-      "@env/*": ["src/environments/*"]
+      "@core": [
+        "src/app/core/index",
+        "src/app/core"
+      ],
+      "@core/*": [
+        "src/app/core/*"
+      ],
+      "@framework": [
+        "src/app/framework/index",
+        "src/app/framework"
+      ],
+      "@framework/*": [
+        "src/app/framework/*"
+      ],
+      "@modules": [
+        "src/app/modules/index",
+        "src/app/modules"
+      ],
+      "@modules/*": [
+        "src/app/modules/*"
+      ],
+      "@layout": [
+        "src/app/layout/index",
+        "src/app/layout"
+      ],
+      "@layout/*": [
+        "src/app/layout/*"
+      ],
+      "@shared": [
+        "src/app/shared/index",
+        "src/app/shared"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ],
+      "@env": [
+        "src/environments/index",
+        "src/environments"
+      ],
+      "@env/*": [
+        "src/environments/*"
+      ]
     }
   },
   "angularCompilerOptions": {

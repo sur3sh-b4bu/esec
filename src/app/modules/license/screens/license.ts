@@ -18,7 +18,7 @@ import { LicenseUsage } from './license-usage/license-usage';
 import { LicenseUser } from './license-user/license-user';
 import { FilterServiceGlobal } from '@core/services/filter.service';
 import { FilterBar } from '@layout/filter-bar/filter-bar';
-import { FilterState } from '@core/state/filter.state';
+import { SubFilterBar } from '@layout/sub-filter-bar/sub-filter-bar';
 
 @Component({
   selector: 'app-license',
@@ -39,7 +39,8 @@ import { FilterState } from '@core/state/filter.state';
     LicenseReportType1,
     LicenseUsage,
     LicenseUser,
-    FilterBar
+    FilterBar,
+    SubFilterBar
   ],
   templateUrl: './license.html',
   styleUrl: './license.css',

@@ -1,0 +1,268 @@
+:host {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: #f1f5f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+  overflow: hidden;
+}
+
+.chart-page-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.top-control-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 14px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #cbd5e1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  font-size: 12px;
+  flex-wrap: wrap;
+}
+
+.plot-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-right: 1px solid #e2e8f0;
+  padding-right: 14px;
+}
+
+.control-label {
+  font-weight: 600;
+  color: #334155;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  color: #1e293b;
+}
+
+.checkbox-options {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-right: 1px solid #e2e8f0;
+  padding-right: 14px;
+  flex-wrap: wrap;
+}
+
+.cb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #cbd5e1;
+  background-color: #f8fafc;
+  color: #475569;
+  user-select: none;
+  transition: all 0.15s ease;
+}
+
+.cb-badge input[type="checkbox"] {
+  margin: 0;
+  cursor: pointer;
+}
+
+.cb-dp {
+  background-color: #0066cc;
+  color: #ffffff;
+  border-color: #0055b3;
+}
+
+.cb-da {
+  background-color: #475569;
+  color: #ffffff;
+  border-color: #334155;
+}
+
+.cb-dpm {
+  background-color: #0284c7;
+  color: #ffffff;
+  border-color: #0369a1;
+}
+
+.cb-dam {
+  background-color: #0d9488;
+  color: #ffffff;
+  border-color: #0f766e;
+}
+
+.cb-wp {
+  background-color: #ff4500;
+  color: #ffffff;
+  border-color: #e03e00;
+}
+
+.cb-wa {
+  background-color: #ea580c;
+  color: #ffffff;
+  border-color: #c2410c;
+}
+
+.cb-wpm {
+  background-color: #d97706;
+  color: #ffffff;
+  border-color: #b45309;
+}
+
+.cb-wam {
+  background-color: #65a30d;
+  color: #ffffff;
+  border-color: #4d7c0f;
+}
+
+.cb-issued {
+  background-color: #800080;
+  color: #ffffff;
+  border-color: #660066;
+}
+
+.summary-info {
+  font-weight: 600;
+  color: #1e293b;
+  margin-left: auto;
+  font-size: 12px;
+}
+
+.dashboard-body {
+  display: flex;
+  flex: 1;
+  gap: 8px;
+  padding: 6px 10px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.charts-section {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 0;
+}
+
+.charts-row {
+  display: flex;
+  flex: 1;
+  gap: 6px;
+  min-height: 0;
+}
+
+.chart-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  padding: 4px 6px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 2px;
+  margin-bottom: 2px;
+  height: 22px;
+}
+
+.chart-title {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 11px;
+}
+
+.working-days-cb {
+  font-size: 10px;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.chart-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.highchart-host-container {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.indicators-section {
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  min-height: 0;
+  overflow: hidden;
+}
+
+.table-header {
+  background-color: #3b5168;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 8px 12px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.indicators-table-wrapper {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.indicators-table-wrapper ag-grid-angular {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.highcharts-fullscreen-wrapper {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 999999 !important;
+  background-color: #ffffff !important;
+}

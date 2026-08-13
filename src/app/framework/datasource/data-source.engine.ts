@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { BaseDataSource } from './base-data-source';
 
 @Injectable({
@@ -8,8 +9,8 @@ import { BaseDataSource } from './base-data-source';
 })
 
 export class DataSourceEngine {
-  private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:3000/api';
+  private readonly http = inject(HttpClient);
+  private readonly baseUrl = 'http://localhost:3000/api';
 
   load<T>(dataSource: BaseDataSource<T>, filterService: any): Observable<T[]> {
     const procedureKey = dataSource.procedure;
@@ -21,9 +22,7 @@ export class DataSourceEngine {
     if (dataSource.buildParams) {
       fullParams = dataSource.buildParams(filterService);
     } else {
-      const range = filterService.range ? filterService.range() : '';
-      const staticParams = dataSource.procedureParams || [];
-      fullParams = [...staticParams,range,  "All"];
+      throw new Error('DataSource must define a buildParams method.');    
     }
 
     const body = {
@@ -31,7 +30,8 @@ export class DataSourceEngine {
       params: fullParams
     };
 
-    return this.http.post<T[]>(`${this.baseUrl}/execute`, body);
+    return this.http.post<T[]>(`${this.baseUrl}/execute`, body).pipe(
+      map(res => dataSource.processResponse ? dataSource.processResponse(res) : res)
+    );
   }
 }
-

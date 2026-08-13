@@ -1,9 +1,10 @@
-import { Component, Input, ChangeDetectionStrategy, effect, signal, inject } from '@angular/core';
+import { Component, input, output, ChangeDetectionStrategy, effect, signal, inject, OnDestroy } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import { GridApi, GridReadyEvent, ModelUpdatedEvent } from 'ag-grid-community';
+import { GridApi, GridReadyEvent, CellClickedEvent } from 'ag-grid-community';
 import { GridContext } from '../../models/grid-context.model';
 import { DataSourceEngine } from '../../../datasource';
 import { DEFAULT_COL_DEF, DEFAULT_THEME } from '../../../../shared/config/grid.config';
+import { StatusBarService } from '../../../../core/services/statusbar.service';
 
 @Component({
   selector: 'framework-grid',
@@ -14,10 +15,16 @@ import { DEFAULT_COL_DEF, DEFAULT_THEME } from '../../../../shared/config/grid.c
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
-export class FrameworkGridComponent<T> {
-  @Input({ required: true }) context!: GridContext<T>;
+export class FrameworkGridComponent<T> implements OnDestroy {
+  readonly context = input.required<GridContext<T>>();
+  readonly sideBar = input<any>({
+    toolPanels: ['columns', 'filters'],
+    defaultToolPanel: ''
+  });
+  readonly cellClick = output<CellClickedEvent>();
 
   private engine = inject(DataSourceEngine);
+  private statusBarService = inject(StatusBarService);
 
   theme = DEFAULT_THEME;
   defaultColDef = DEFAULT_COL_DEF;
@@ -27,22 +34,33 @@ export class FrameworkGridComponent<T> {
 
   constructor() {
     effect(() => {
-      if (this.context && this.context.dataSource) {
+      const currentContext = this.context();
+      if (currentContext && currentContext.dataSource) {
 
-        this.context.filterService?.range?.();
-        this.context.filterService?.option?.();
-        this.context.filterService?.searchTerm?.();
-        this.context.filterService?.licenseServerActive?.();
-        this.context.dataSource.refreshTrigger?.();
+        currentContext.filterService?.range?.();
+        currentContext.filterService?.option?.();
+        currentContext.filterService?.searchTerm?.();
+        currentContext.filterService?.licenseServerActive?.();
+        currentContext.dataSource.refreshTrigger?.();
+        this.statusBarService.usageTime();
 
-        this.engine.load(this.context.dataSource, this.context.filterService).subscribe({
+        this.engine.load(currentContext.dataSource, currentContext.filterService).subscribe({
           next: (res) => {
-            this.rowData.set(res);
-            if (this.context.filterService && this.context.filterService.count) {
-              this.context.filterService.count.set(res.length);
+            this.rowData.set(res || []);
+            if (this.gridApi) {
+              if (currentContext.columns) {
+                this.gridApi.setGridOption('columnDefs', currentContext.columns);
+              }
+              this.gridApi.refreshHeader();
+              this.gridApi.refreshCells({ force: true });
             }
+            this.updateRowCount();
           },
-          error: (err) => console.error('FrameworkGrid fetch error:', err)
+          error: (err) => {
+            console.error('FrameworkGrid fetch error:', err);
+            this.rowData.set([]);
+            this.updateRowCount();
+          }
         });
       }
     });
@@ -50,11 +68,26 @@ export class FrameworkGridComponent<T> {
 
   onGridReady(params: GridReadyEvent): void {
     this.gridApi = params.api;
+    (this.context() as any)?.onGridReady?.(params);
+    this.updateRowCount();
   }
 
-  onModelUpdated(event: ModelUpdatedEvent): void {
-    if (this.gridApi && this.context && this.context.filterService && this.context.filterService.count) {
-      this.context.filterService.count.set(this.gridApi.getDisplayedRowCount());
+  onModelUpdated(): void {
+    this.updateRowCount();
+  }
+
+  onCellClicked(event: CellClickedEvent): void {
+    this.cellClick.emit(event);
+  }
+
+  ngOnDestroy(): void {
+  }
+
+  private updateRowCount(): void {
+    const currentContext = this.context();
+    if (currentContext && currentContext.filterService && currentContext.filterService.count) {
+      const count = this.gridApi ? this.gridApi.getDisplayedRowCount() : this.rowData().length;
+      currentContext.filterService.count.set(count);
     }
   }
 }

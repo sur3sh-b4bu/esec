@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { ModuleService } from '@core';
 
 @Component({
   selector: 'app-admin-access-control',
@@ -10,4 +11,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 })
 
 export class AdminAccessControl {
+
+  moduleService = inject(ModuleService);
+
+  modules = this.moduleService.getModules();
 }

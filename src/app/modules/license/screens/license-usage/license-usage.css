@@ -1,13 +1,51 @@
-
-:host {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    min-height: 0;
-    height: 100%;
-    width: 100%;
+.license-usage-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  background-color: #ffffff;
+  gap: 8px;
 }
-:host > * {
-    flex: 1;
-    min-height: 0;
+
+.usage-subtabs-header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #f1f5f9;
+  padding: 4px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  width: fit-content;
+}
+
+.usage-tab-btn {
+  border: none;
+  background: transparent;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.usage-tab-btn:hover {
+  color: #334155;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.usage-tab-btn.active {
+  background-color: #ffffff;
+  color: #0f172a;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.usage-subtab-content {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
 }

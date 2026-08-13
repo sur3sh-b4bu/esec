@@ -1,0 +1,28 @@
+<div class="matrix-subtabs-container">
+  <div class="matrix-subtabs-header">
+    @for (t of matrixTabs; track t) {
+      <button
+        type="button"
+        class="matrix-tab-btn"
+        [class.active]="activeMatrixTab() === t"
+        (click)="selectMatrixTab(t)"
+      >
+        {{ t }}
+      </button>
+    }
+  </div>
+
+  <div class="matrix-subtab-content">
+    @switch (activeMatrixTab()) {
+      @case ('Division') {
+        <app-license-organization-usage-matrix-division [tab]="tab()"></app-license-organization-usage-matrix-division>
+      }
+      @case ('Department') {
+        <app-license-organization-usage-matrix-department [tab]="tab()"></app-license-organization-usage-matrix-department>
+      }
+      @case ('Group') {
+        <app-license-organization-usage-matrix-group [tab]="tab()"></app-license-organization-usage-matrix-group>
+      }
+    }
+  </div>
+</div>

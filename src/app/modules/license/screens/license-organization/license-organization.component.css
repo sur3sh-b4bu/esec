@@ -13,3 +13,130 @@ framework-grid {
     width: 100%;
     min-height: 0;
 }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  background-color: #f8fafc;
+  height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.gauge-card {
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header-tag {
+  display: inline-block;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #334155;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  margin-bottom: 8px;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.gauge-container {
+  width: 165px;
+  height: 145px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Smooth CSS transition for Highcharts SVG needle rotation */
+::ng-deep .highcharts-dial {
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.kpi-stack {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.kpi-block {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 40px;
+}
+
+.pink-block {
+  background-color: #fde8e8;
+}
+
+.gray-block {
+  background-color: #f1f5f9;
+}
+
+.kpi-icon-box {
+  width: 36px;
+  min-width: 36px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pink-icon {
+  background-color: #ef4444;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.gray-icon {
+  background-color: #e2e8f0;
+}
+
+.kpi-metric-cell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2px 6px;
+}
+
+.teal-divider {
+  border-right: 1.5px solid #0d9488;
+}
+
+.kpi-val {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.1;
+}
+
+.kpi-lbl {
+  font-size: 9px;
+  color: #475569;
+  font-weight: 500;
+  white-space: nowrap;
+}

@@ -24,7 +24,6 @@ export class TabRow {
   }
 
   public close(idToRemove: string) {
-    const currentTabs = this.sideBarService.openedtab();
     this.sideBarService.openedtab.update(tabs => tabs.filter(t => t.id !== idToRemove));
 
     const remainingTabs = this.sideBarService.openedtab();

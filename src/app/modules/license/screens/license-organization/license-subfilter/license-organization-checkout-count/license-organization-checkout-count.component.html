@@ -1,0 +1,16 @@
+<div class="checkout-count-container">
+  <div class="usage-info-bar">
+    <div class="meta-info-text">
+      Checkout Count. Matlab. 27005&#64;MSILENGSAOLIC02. MATLAB_Report_Gen. 15-Aug-2025 To 09-Aug-2026. 08:00 - 17:00
+    </div>
+    <div class="right-controls">
+      <label class="working-days-label">
+        <input type="checkbox" [checked]="workingDays()" (change)="toggleWorkingDays()" /> Working Days
+      </label>
+    </div>
+  </div>
+
+  <div class="chart-wrapper">
+    <framework-chart [options]="chartOptions"></framework-chart>
+  </div>
+</div>

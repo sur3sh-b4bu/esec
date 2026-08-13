@@ -15,3 +15,12 @@
   width: 100%;
   min-height: 0;
 }
+
+::ng-deep .ag-header-cell-label {
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+::ng-deep .ag-header-cell-text {
+  text-align: center !important;
+}

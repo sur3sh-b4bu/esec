@@ -1,0 +1,100 @@
+<div class="utilization-hours-container">
+  <!-- Top Control Bar 1 -->
+  <div class="top-control-bar-1">
+    <div class="left-controls">
+      <div class="radio-pill-group">
+        <label class="radio-pill">
+          <input type="radio" name="periodMode" [checked]="periodMode() === 'month'" (change)="setPeriodMode('month')" /> Month
+        </label>
+        <label class="radio-pill">
+          <input type="radio" name="periodMode" [checked]="periodMode() === 'date'" (change)="setPeriodMode('date')" /> Date
+        </label>
+      </div>
+
+      <div class="radio-pill-group">
+        <label class="radio-pill">
+          <input type="radio" name="hoursMode" [checked]="hoursMode() === '24'" (change)="hoursMode.set('24')" /> 24 Hours
+        </label>
+        <label class="radio-pill">
+          <input type="radio" name="hoursMode" [checked]="hoursMode() === 'working'" (change)="hoursMode.set('working')" /> Working Hours Usage 09:00 - 18:45
+        </label>
+      </div>
+
+      <div class="checkbox-group">
+        <label class="checkbox-label">
+          <input type="checkbox" [checked]="workingDays()" (change)="toggleWorkingDays()" /> Working Days
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" [checked]="newCalculation()" (change)="newCalculation.set(!newCalculation())" /> New Calculation
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" [checked]="showMonthDays()" (change)="showMonthDays.set(!showMonthDays())" /> Show Month Days
+        </label>
+      </div>
+    </div>
+
+    <div class="meta-title-text">
+      Utilization and Hours (Month). Matlab. 27005&#64;MSILENGSAOLIC02. MATLAB_Report_Gen. 15-Aug-2025 To 09-Aug-2026
+    </div>
+  </div>
+
+  <!-- Sub-filter Category Bar -->
+  <div class="top-control-bar-2">
+    <div class="category-pill-group">
+      <label class="category-pill">
+        <input type="radio" name="grpCat" [checked]="groupCategory() === 'Division'" (change)="setGroupCategory('Division')" /> Division
+      </label>
+      <label class="category-pill">
+        <input type="radio" name="grpCat" [checked]="groupCategory() === 'Department'" (change)="setGroupCategory('Department')" /> Department
+      </label>
+      <label class="category-pill">
+        <input type="radio" name="grpCat" [checked]="groupCategory() === 'Group'" (change)="setGroupCategory('Group')" /> Group
+      </label>
+    </div>
+    <div class="rows-count-text">Rows : 4</div>
+  </div>
+
+  <!-- Summary Cards Banner & Average KPI Table -->
+  <div class="summary-kpi-banner">
+    <div class="kpi-left-info">
+      <div class="info-row">
+        <span>Report Criteria (%) : Total Utilized Hours / Total License Hours</span>
+        <span class="highlight">Current Issued Qty : 7</span>
+      </div>
+      <div class="info-row">
+        Working Time : 00:00 to 24:00, Working Hours : 24.00, Months Considered : 12
+      </div>
+      <div class="info-row bold">
+        Total License Hours : 18.528 K. Total Utilized Hours : 73.612. Utilized Hours (%) : 0.40
+      </div>
+    </div>
+
+    <div class="kpi-right-table">
+      <div class="avg-header">Average</div>
+      <div class="table-grid">
+        <div class="th">Work Peak (%)</div>
+        <div class="th">Day Peak (%)</div>
+        <div class="th">Utilized Hours</div>
+        <div class="th">Utilized Hours (%) &gt; 0</div>
+        <div class="td">28.58</div>
+        <div class="td">28.58</div>
+        <div class="td">6.134</div>
+        <div class="td">0.94</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Split Body Layout: Grid Left, Chart Right -->
+  <div class="utilization-split-body">
+    <div class="grid-panel">
+      <div class="grid-container">
+        <framework-grid [context]="context"></framework-grid>
+      </div>
+      <div class="grid-footer-text">Distinct Users : 7</div>
+    </div>
+
+    <div class="chart-panel">
+      <framework-chart [options]="chartOptions"></framework-chart>
+    </div>
+  </div>
+</div>

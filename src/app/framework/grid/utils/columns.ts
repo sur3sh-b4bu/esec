@@ -8,14 +8,12 @@ export function gridColumns(...fields: ColumnDefInput[]): ColDef[] {
       return {
         headerName: formatHeaderName(field),
         field: field,
-        width: 110
       };
     } else {
 
       const headerName = field.headerName || (field.field ? formatHeaderName(field.field) : '');
       return {
         headerName: headerName,
-        width: 110,
         ...field
       };
     }
@@ -28,4 +26,14 @@ function formatHeaderName(field: string): string {
     .split('_')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(' ');
+}
+
+export function statusPercentFormatter(params: any): string {
+  if (params.value === undefined || params.value === null || params.value === '') return '';
+  const val = Number(params.value);
+  if (isNaN(val)) return '';
+  let dot = '🟢';
+  if (val >= 80) dot = '🔴';
+  else if (val >= 60) dot = '🟡';
+  return `${dot} ${val.toFixed(1)}`;
 }

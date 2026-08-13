@@ -1,0 +1,106 @@
+<!-- Time Selection Panel Popover -->
+<div class="popover-panel time-popover" *ngIf="statusBarService.time()">
+  <div class="popover-row">
+    <span class="label-text">Start Time</span>
+    <div class="time-input-group">
+      <input
+        type="text"
+        class="digit-box"
+        [class.active]="statusBarService.activeField() === 'startHour'"
+        [ngModel]="statusBarService.startHour()"
+        (ngModelChange)="statusBarService.setStartHour($event)"
+        (focus)="statusBarService.setActiveField('startHour')"
+        maxlength="2"
+      />
+      <span class="colon">:</span>
+      <input
+        type="text"
+        class="digit-box"
+        [class.active]="statusBarService.activeField() === 'startMinute'"
+        [ngModel]="statusBarService.startMinute()"
+        (ngModelChange)="statusBarService.setStartMinute($event)"
+        (focus)="statusBarService.setActiveField('startMinute')"
+        maxlength="2"
+      />
+    </div>
+  </div>
+
+  <div class="popover-row">
+    <span class="label-text">End Time</span>
+    <div class="time-input-group">
+      <input
+        type="text"
+        class="digit-box"
+        [class.active]="statusBarService.activeField() === 'endHour'"
+        [ngModel]="statusBarService.endHour()"
+        (ngModelChange)="statusBarService.setEndHour($event)"
+        (focus)="statusBarService.setActiveField('endHour')"
+        maxlength="2"
+      />
+      <span class="colon">:</span>
+      <input
+        type="text"
+        class="digit-box"
+        [class.active]="statusBarService.activeField() === 'endMinute'"
+        [ngModel]="statusBarService.endMinute()"
+        (ngModelChange)="statusBarService.setEndMinute($event)"
+        (focus)="statusBarService.setActiveField('endMinute')"
+        maxlength="2"
+      />
+    </div>
+  </div>
+</div>
+
+<!-- Parameters Configuration Panel Popover -->
+<div class="popover-panel param-popover" *ngIf="statusBarService.parameter()">
+  <div class="popover-row">
+    <span class="label-text">CPU Hours Per Day:</span>
+    <input
+      type="number"
+      class="digit-box wide-box"
+      [ngModel]="statusBarService.cpuHours()"
+      (ngModelChange)="statusBarService.setCpuHours($event)"
+    />
+  </div>
+
+  <div class="popover-row">
+    <span class="label-text">Usage Per Day:</span>
+    <div class="time-input-group">
+      <input
+        type="text"
+        class="digit-box"
+        [ngModel]="statusBarService.usageHour()"
+        (ngModelChange)="statusBarService.setUsageHour($event)"
+        maxlength="2"
+      />
+      <span class="colon">:</span>
+      <input
+        type="text"
+        class="digit-box"
+        [ngModel]="statusBarService.usageMinute()"
+        (ngModelChange)="statusBarService.setUsageMinute($event)"
+        maxlength="2"
+      />
+    </div>
+  </div>
+
+  <div class="popover-row">
+    <span class="label-text">Percentile:</span>
+    <input
+      type="number"
+      class="digit-box wide-box"
+      [ngModel]="statusBarService.percentile()"
+      (ngModelChange)="statusBarService.setPercentile($event)"
+    />
+  </div>
+
+  <div class="popover-row">
+    <span class="label-text">Long Duration:</span>
+    <input
+      type="number"
+      class="digit-box wide-box"
+      [ngModel]="statusBarService.longDuration()"
+      (ngModelChange)="statusBarService.setLongDuration($event)"
+    />
+  </div>
+</div>

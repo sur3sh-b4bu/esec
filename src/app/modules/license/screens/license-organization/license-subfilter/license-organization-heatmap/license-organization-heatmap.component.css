@@ -1,0 +1,191 @@
+:host {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: #f8fafc;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 11px;
+  overflow: hidden;
+}
+
+.heatmap-page-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.top-control-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px 12px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #cbd5e1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.select-control {
+  padding: 2px 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  background-color: #ffffff;
+  color: #1e293b;
+}
+
+.radio-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-right: 8px;
+  border-right: 1px solid #e2e8f0;
+}
+
+.radio-label,
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  color: #1e293b;
+  font-weight: 500;
+}
+
+.header-info-text {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 11px;
+  margin-left: 4px;
+}
+
+.pill-badge-holiday {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  background-color: #fecdd3;
+  color: #9f1239;
+  margin-left: auto;
+}
+
+.legend-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.legend-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.chip-0-50 { background-color: #00b4d8; }
+.chip-50-60 { background-color: #0284c7; }
+.chip-60-70 { background-color: #22c55e; }
+.chip-70-80 { background-color: #eab308; }
+.chip-80-90 { background-color: #f97316; }
+.chip-90-99 { background-color: #b91c1c; }
+.chip-100 { background-color: #ef4444; }
+
+.heatmap-grid-container {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  padding: 6px;
+}
+
+.heatmap-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  font-size: 11px;
+}
+
+.heatmap-table th {
+  background-color: #34495e;
+  color: #ffffff;
+  font-weight: 600;
+  text-align: center;
+  padding: 4px 6px;
+  border: 1px solid #94a3b8;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  min-width: 42px;
+}
+
+.heatmap-table td {
+  border: 1px solid #cbd5e1;
+  text-align: center;
+  padding: 3px 2px;
+  vertical-align: middle;
+}
+
+.date-col {
+  background-color: #ffffff;
+  color: #1e293b;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 4px 8px !important;
+  text-align: left !important;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  border-right: 2px solid #94a3b8 !important;
+}
+
+.cell-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  line-height: 1.1;
+}
+
+.top-val {
+  font-weight: 600;
+  font-size: 10px;
+}
+
+.bot-val {
+  font-weight: 500;
+  font-size: 9px;
+}
+
+.text-white {
+  color: #ffffff !important;
+}
+
+.text-dark {
+  color: #0f172a !important;
+}
+
+.text-muted {
+  color: #64748b !important;
+}

@@ -1,30 +1,100 @@
 :root {
-    --card-padding: 2px;
-    --toolbar-height: 35px;
-    --toolbar-control-height: 26px;
+  --card-padding: 2px;
+  --toolbar-height: 35px;
+  --toolbar-control-height: 26px;
 }
 
 html,
 body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    user-select: none;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  user-select: none;
 }
-.ag-theme-quartz {
-  --ag-row-border-color: #dcdcdc;
-  --ag-border-color: #dcdcdc;
+
+.ag-root-wrapper {
+  --ag-row-border-color: #cbd5e1 !important;
+  --ag-border-color: #cbd5e1 !important;
 }
-.ag-theme-quartz .ag-cell {
-  border-right: 1px solid var(--ag-border-color);
+
+.ag-row {
+  border-bottom: 1px solid #bdc3cb !important;
 }
-.ag-theme-quartz .ag-header-cell {
-  border-right: 1px solid #7a8c9d;
+
+.ag-cell {
+  border-right: 1px solid #cbd5e1 !important;
+}
+
+.ag-cell-focus,
+.ag-cell-focused,
+.ag-cell:focus,
+.ag-cell:focus-visible {
+  outline: none !important;
+  box-shadow: inset 0 0 0 1.5px #0284c7 !important;
+  border-color: transparent !important;
+  z-index: 5 !important;
+}
+
+.ag-header-cell,
+.ag-header-group-cell {
+  border-right: 1px solid #7a8c9d !important;
+  border-bottom: 1px solid #7a8c9d !important;
+}
+
+.ag-header-cell-label,
+.ag-header-group-cell-label {
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.ag-header-cell-text,
+.ag-header-group-cell-text {
+  text-align: center !important;
+  width: 100%;
 }
 
 .ag-watermark {
   display: none !important;
 }
 
+.ag-side-bar,
+.ag-tool-panel-wrapper,
+.ag-column-select-panel,
+.ag-filter-toolpanel,
+.ag-column-select-header,
+.ag-column-select-column-group,
+.ag-column-select-column,
+.ag-group-title-bar-title,
+.ag-filter-toolpanel-header {
+  color: #1e293b !important;
+}
+
+.ag-side-bar .ag-side-button button {
+  color: #475569 !important;
+}
+
+.ag-side-bar .ag-side-button.ag-selected button {
+  color: #0f172a !important;
+  font-weight: 600;
+}
+
+.ag-side-bar .ag-side-buttons {
+  width: 25px !important;
+}
+
+.ag-side-bar .ag-side-button button {
+  padding: 8px 4px !important;
+  font-size: 11px !important;
+}
+
+.ag-tool-panel-wrapper {
+  width: 200px !important;
+  min-width: 180px !important;
+}
+
+.ag-theme-alpine .ag-floating-filter-button,
+.ag-theme-alpine .ag-floating-filter-button-button {
+  display: none !important;
+}

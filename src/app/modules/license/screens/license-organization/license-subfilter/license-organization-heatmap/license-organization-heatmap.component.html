@@ -1,0 +1,58 @@
+<div class="heatmap-page-container">
+  <div class="top-control-panel">
+    <!-- Row 1 -->
+    <div class="control-row">
+      <select class="select-control" [value]="modeType()" (change)="modeType.set($any($event.target).value)">
+        <option value="Utilization">Utilization</option>
+        <option value="Peak">Peak</option>
+        <option value="Average">Average</option>
+      </select>
+
+      <div class="radio-group">
+        <label class="radio-label">
+          <input type="radio" name="calcMode" value="Peak" [checked]="calcMode() === 'Peak'" (change)="calcMode.set('Peak')"> Peak
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="calcMode" value="Average" [checked]="calcMode() === 'Average'" (change)="calcMode.set('Average')"> Average
+        </label>
+      </div>
+
+      <label class="checkbox-label">
+        <input type="checkbox" [checked]="showUsed()" (change)="showUsed.set(!showUsed())"> Used
+      </label>
+
+      <label class="checkbox-label">
+        <input type="checkbox" [checked]="showIssued()" (change)="showIssued.set(!showIssued())"> Issued
+      </label>
+
+      <label class="checkbox-label">
+        <input type="checkbox" [checked]="showPercentage()" (change)="showPercentage.set(!showPercentage())"> Used / Issued Percentage
+      </label>
+
+      <label class="checkbox-label">
+        <input type="checkbox" [checked]="showWorkingDays()" (change)="toggleWorkingDays()"> Working Days
+      </label>
+
+      <span class="header-info-text">
+        Heatmap. {{ software() }}. {{ server() }}. {{ feature() }}. {{ startDate() }} To {{ endDate() }}. Last Issued : {{ lastIssued() }}
+      </span>
+
+      <span class="pill-badge-holiday">Holiday</span>
+    </div>
+
+    <!-- Row 2: Legend Scale Bar -->
+    <div class="legend-bar-row">
+      <span class="legend-chip chip-0-50">0% - 50%</span>
+      <span class="legend-chip chip-50-60">50% - 60%</span>
+      <span class="legend-chip chip-60-70">60% - 70%</span>
+      <span class="legend-chip chip-70-80">70% - 80%</span>
+      <span class="legend-chip chip-80-90">80% - 90%</span>
+      <span class="legend-chip chip-90-99">90% - 99%</span>
+      <span class="legend-chip chip-100">100%</span>
+    </div>
+  </div>
+
+  <div class="heatmap-grid-container flex-1 w-full h-full overflow-hidden">
+    <framework-grid [context]="context"></framework-grid>
+  </div>
+</div>

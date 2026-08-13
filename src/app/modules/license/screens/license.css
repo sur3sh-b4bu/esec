@@ -7,11 +7,12 @@
     width: 100%;
 }
 
-:host > app-filter-bar {
+:host > app-filter-bar,
+:host > app-sub-filter-bar {
     flex: 0 0 auto !important;
 }
 
-:host > *:not(app-filter-bar) {
+:host > *:not(app-filter-bar):not(app-sub-filter-bar) {
     flex: 1;
     min-height: 0;
     display: flex;

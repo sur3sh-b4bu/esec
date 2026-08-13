@@ -1,4 +1,4 @@
-import { Component, ContentChildren, QueryList, AfterContentInit, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, contentChildren, effect } from '@angular/core';
 import { FrameworkTabComponent } from '../framework-tab/framework-tab.component';
 
 @Component({
@@ -10,21 +10,25 @@ import { FrameworkTabComponent } from '../framework-tab/framework-tab.component'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
-export class FrameworkTabsComponent implements AfterContentInit {
-  @ContentChildren(FrameworkTabComponent) tabs!: QueryList<FrameworkTabComponent>;
+export class FrameworkTabsComponent {
+  readonly tabs = contentChildren(FrameworkTabComponent);
 
   activeTab = signal<FrameworkTabComponent | null>(null);
 
-  ngAfterContentInit() {
-    const activeTabs = this.tabs.filter(tab => tab.isActive());
-    if (activeTabs.length === 0 && this.tabs.first) {
-      this.selectTab(this.tabs.first);
-    }
+  constructor() {
+    effect(() => {
+      const allTabs = this.tabs();
+      if (allTabs.length > 0 && !this.activeTab()) {
+        const active = allTabs.find(tab => tab.isActive()) ?? allTabs[0];
+        this.selectTab(active);
+      }
+    });
   }
 
   selectTab(tab: FrameworkTabComponent) {
-    this.tabs.forEach(t => t.isActive.set(false));
+    this.tabs().forEach(t => t.isActive.set(false));
     tab.isActive.set(true);
     this.activeTab.set(tab);
   }
 }
+

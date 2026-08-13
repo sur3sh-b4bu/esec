@@ -10,6 +10,7 @@ export class FilterServiceGlobal {
     searchTerm = this.filterState.searchTerm;
     range = this.filterState.range;
     option = this.filterState.option;
+    feature = this.filterState.feature;
     viewMode = this.filterState.viewMode;
     licenseServerActive = this.filterState.licenseServerActive;
     licenseServerInactive = this.filterState.licenseServerInactive;
@@ -22,12 +23,13 @@ export class FilterServiceGlobal {
         this.searchTerm.set('');
         this.range.set('YTD');
         this.option.set('DP');
+        this.feature.set('All Feature');
         this.licenseServerActive.set(true);
         this.licenseServerInactive.set(false);
-        this.notExpired.set(true);
+        this.notExpired.set(false);
         this.utilizationGreen.set(true);
         this.utilizationOrange.set(true);
         this.utilizationRed.set(true);
         this.viewMode.set('dashboard');
     }
-}
+}

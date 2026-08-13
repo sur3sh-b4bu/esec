@@ -1,0 +1,13 @@
+<div class="sub-filter-container">
+  <div class="tab-group">
+    @for (tab of subTabsGroup1; track tab) {
+      <button 
+        type="button" 
+        class="sub-tab-btn" 
+        [class.active]="selectedTab() === tab" 
+        (click)="selectTab(tab)">
+        {{ tab }}
+      </button>
+    }
+  </div>
+</div>

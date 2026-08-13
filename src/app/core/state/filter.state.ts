@@ -10,10 +10,12 @@ export class FilterState {
 
     range = signal('YTD');
 
-    option = signal('DP');
+    option = signal('dp');
+
+    feature = signal('All');
 
     licenseServerActive = signal(true);
-    licenseServerInactive = signal(false);
+    licenseServerInactive = signal(true);
 
     notExpired = signal(true);
 
@@ -21,5 +23,5 @@ export class FilterState {
     utilizationOrange = signal(true);
     utilizationRed = signal(true);
 
-    viewMode = signal<'dashboard' | 'list'>('dashboard');
+    viewMode = signal<'dashboard' | 'list'>('list');
 }
